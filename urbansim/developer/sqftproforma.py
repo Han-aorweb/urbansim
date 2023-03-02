@@ -553,7 +553,7 @@ class SqFtProForma(object):
         c = self.config
 
         # weighted rent for this form
-        df['weighted_rent'] = np.dot(df[c.uses], c.forms[form])
+        df['weighted_rent'] = np.dot(df[c.uses].replace(np.nan, 0), c.forms[form])
 
         # min between max_fars and max_heights
         df['max_far_from_heights'] = df.max_height / c.height_per_story * \
